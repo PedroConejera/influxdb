@@ -1,4 +1,4 @@
-package tsdb_test
+package tsi1_test
 
 import (
 	"bytes"
@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/influxdata/influxdb/models"
-	"github.com/influxdata/influxdb/tsdb"
+	"github.com/influxdata/influxdb/tsdb/tsi1"
 )
 
 // Ensure tags can be marshaled into a byte slice.
@@ -52,7 +52,7 @@ func TestMakeTagsKey(t *testing.T) {
 			result: []byte(`baz|battttt`),
 		},
 	} {
-		result := tsdb.MakeTagsKey(tt.keys, tt.tags)
+		result := tsi1.MakeTagsKey(tt.keys, tt.tags)
 		if !bytes.Equal(result, tt.result) {
 			t.Fatalf("%d. unexpected result: exp=%s, got=%s", i, tt.result, result)
 		}
@@ -84,6 +84,6 @@ func benchmarkMakeTagsKey(b *testing.B, keyN int) {
 	// Unmarshal map into byte slice.
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
-		tsdb.MakeTagsKey(keys, tags)
+		tsi1.MakeTagsKey(keys, tags)
 	}
 }

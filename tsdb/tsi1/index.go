@@ -1056,7 +1056,7 @@ func (i *Index) TagSets(name []byte, opt query.IteratorOptions) ([]*query.TagSet
 		_, tagsBuf = tsdb.ParseSeriesKeyInto(key, tagsBuf)
 		var tagsAsKey []byte
 		if len(dims) > 0 {
-			tagsAsKey = tsdb.MakeTagsKey(dims, tagsBuf)
+			tagsAsKey = MakeTagsKey(dims, tagsBuf)
 		}
 
 		tagSet, ok := tagSets[string(tagsAsKey)]

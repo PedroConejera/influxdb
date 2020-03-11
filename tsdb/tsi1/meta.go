@@ -1,4 +1,4 @@
-package tsdb
+package tsi1
 
 import (
 	"github.com/influxdata/influxdb/models"
